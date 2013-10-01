@@ -34,7 +34,7 @@ setup(
     classifiers=[
         "Programming Language :: Python",
         "Development Status :: 1 - Planning",
-        "License :: MIT Licence",
+        "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 2.6",
