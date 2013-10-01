@@ -56,25 +56,16 @@ class MySocketHandler(SockJSRoomHandler):
     def initialize(self):
         self.roomId = "0"
 
-    #
-    # ---------------------------
-    #   SOCKJS DEFAULT FUNCTION
-    # ---------------------------
-    #
+    # SOCKJS DEFAULT FUNCTION
+
     def on_open(self, info):
         pass
-
-
 
     def on_close(self):
         self.on_leave()
 
+    # SOCKJS CUSTOM FUNCTION
 
-    #
-    # ---------------------------
-    #   SOCKJS CUSTOM FUNCTION
-    # ---------------------------
-    #
     def on_join(self, data):
         """ Join timer system """
         # data => roomId
@@ -82,13 +73,10 @@ class MySocketHandler(SockJSRoomHandler):
 
         self.roomId = str(data.roomId)
 
-
-
     def on_chat(self, data):
         """ Start timer for everybody """
         # data => message
         self.publishToRoom(self.roomId, "chat", {"message" : data.message})
-
 
     def on_leave(self):
         """ Quit timer system """
