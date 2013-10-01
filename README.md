@@ -1,4 +1,4 @@
 python-sockjsroom
 =================
 
-sockjs-tornado multi-room and multi-message type support
+Add multi-room and multi-message type support for sockjs-tornado.
