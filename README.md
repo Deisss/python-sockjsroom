@@ -85,8 +85,17 @@ class MySocketHandler(SockJSRoomHandler):
 
         self.initialize()
 ```
-Now you can have not only **on_join**, **on_message** and **on_close**, 
-but almost what you want (except on_message already used internally)
+Now you can have not only **on_open**, **on_message** and **on_close**, 
+but almost what you want (except on_message already used internally).
+
+The system will do the json convertion for you directly, and helps you
+threw publishing process by providing:
+
+  * **publishToRoom** send message to everybody
+  * **publishToMyself** send message to yourself
+  * **publishToOther** send message to everybody else
+
+With those, it may become simple to publish data to subset of people with ease.
 
 
 
