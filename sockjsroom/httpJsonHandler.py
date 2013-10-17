@@ -33,7 +33,7 @@ class JsonDefaultHandler(tornado.web.RequestHandler):
 
     def write(self, obj):
         """ Print object on output """
-        accept = self.request.get("Accept")
+        accept = self.request.headers.get("Accept")
         if "json" in accept:
             if JsonDefaultHandler.__parser is None:
                 JsonDefaultHandler.__parser = Parser()
