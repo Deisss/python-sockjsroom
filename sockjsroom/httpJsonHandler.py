@@ -38,5 +38,6 @@ class JsonDefaultHandler(tornado.web.RequestHandler):
             if JsonDefaultHandler.__parser is None:
                 JsonDefaultHandler.__parser = Parser()
             super(JsonDefaultHandler, self).write(JsonDefaultHandler.__parser.encode(obj))
+            return
         # If we are not in json mode
         super(JsonDefaultHandler, self).write(obj)
