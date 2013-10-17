@@ -10,6 +10,8 @@ try:
 except ImportError:
     import simplejson as json
 
+import datetime
+
 Parser = None
 
 # Limit import
