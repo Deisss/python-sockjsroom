@@ -49,5 +49,5 @@ try:
     # Switch parser to new mongo supported one
     Parser = MongoJsonParser
 
-except importError:
+except ImportError:
     pass
