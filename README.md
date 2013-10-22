@@ -7,11 +7,11 @@ Add multi-room and multi-message type support for sockjs-tornado.
 Installation
 ------------
 
-The most easy way to install sockjsroom is to use Pypi:
+The most easy way to install sockjsroom is to use PyPI:
 ```
 pip install sockjsroom
 ```
-It will also auto-include tornado and sockjs-tornado
+It will also auto-install tornado and sockjs-tornado (if needed)
 
 The alternative method is to clone this repository:
 ```
@@ -22,34 +22,22 @@ And run setup:
 python setup.py install
 ```
 
+Will register sockjsroom into your local python repo.
 
 
 Usage
 -----
 
-The most basic usage can be a Ping system:
+The most basic usage should be a chat system:
 
 ```python
-from sockjsroom import SockJSDefaultHandler
 
+#
+# ------------------------------
+#   sockjsroom example
+# ------------------------------
+#
 
-class PingSocketHandler(SockJSDefaultHandler):
-    """ Ping system """
-    def on_open(self, info):
-        pass
-
-    def on_message(self):
-        pass
-
-    def on_close(self):
-        pass
-```
-
-This example does only create an empty handler, without any room support.
-
-Here a more complete example using room support:
-
-```python
 from sockjsroom import SockJSRoomHandler
 
 class MySocketHandler(SockJSRoomHandler):
@@ -64,7 +52,7 @@ class MySocketHandler(SockJSRoomHandler):
     def on_close(self):
         self.on_leave()
 
-    # SOCKJS CUSTOM FUNCTION
+    # SOCKJSROOM CUSTOM FUNCTION
 
     def on_join(self, data):
         """ Join timer system """
@@ -84,6 +72,38 @@ class MySocketHandler(SockJSRoomHandler):
             self.leave(self.roomId)
 
         self.initialize()
+
+
+#
+# ------------------------------
+#   This part is not specific
+#   to sockjsroom. It's a
+#   sockjs-tornado part
+# ------------------------------
+#
+
+import tornado.web, tornado.ioloop
+
+from sockjs.tornado import SockJSRouter
+
+class dummyHandler(tornado.web.RequestHandler):
+    """ Regular HTTP handler (unused) """
+    pass
+
+if __name__ == "__main__":
+    # Create route (use MySocketHandler here)
+    Router = SockJSRouter(MySocketHandler, path)
+
+    # Create tornado app
+    app = tornado.web.Application(
+        [(r"/", dummyHandler)] + Router.urls
+    )
+
+    # Listening to application
+    app.listen(8585)
+
+    # Start IOLoop
+    tornado.ioloop.IOLoop.instance().start()
 ```
 Now you can have not only **on_open**, **on_message** and **on_close**, 
 but almost what you want (except on_message already used internally).
@@ -95,8 +115,10 @@ threw publishing process by providing:
   * **publishToMyself** send message to yourself
   * **publishToOther** send message to everybody else
 
-With those, it may become simple to publish data to subset of people with ease.
+With those, it may become simple to __publish data to subset of people__ with ease.
 
+We also provide in example how to use it with default sockjs-tornado: as sockjsroom is built
+on top of sockjs-tornado/tornado couple, the way for starting system, remains quite the same.
 
 
 Furthermore
