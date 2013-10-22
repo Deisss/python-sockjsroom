@@ -92,7 +92,7 @@ class dummyHandler(tornado.web.RequestHandler):
 
 if __name__ == "__main__":
     # Create route (use MySocketHandler here)
-    Router = SockJSRouter(MySocketHandler, path)
+    Router = SockJSRouter(MySocketHandler, "/chat")
 
     # Create tornado app
     app = tornado.web.Application(
