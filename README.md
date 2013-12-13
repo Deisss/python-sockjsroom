@@ -11,7 +11,10 @@ The most easy way to install sockjsroom is to use PyPI:
 ```
 pip install sockjsroom
 ```
-It will also auto-install tornado and sockjs-tornado (if needed)
+It will also auto-install tornado and sockjs-tornado. If, for any reason, they are not installed, you can do it manually:
+```
+pip install tornado sockjs-tornado sockjsroom
+```
 
 The alternative method is to clone this repository:
 ```
