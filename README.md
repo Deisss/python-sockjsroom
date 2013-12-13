@@ -121,6 +121,20 @@ We also provide in example how to use it with default sockjs-tornado: as sockjsr
 on top of sockjs-tornado/tornado couple, the way for starting system, remains quite the same.
 
 
+
+Full usage
+----------
+You can found a real usage, implementing a simple multi-room chat system here:
+
+  * server: [here](https://gist.github.com/Deisss/7941149)
+  * client: [here](https://gist.github.com/Deisss/7941180)
+
+To run the server simply do ```python server.py```.
+To run the client, put all file in same directory, navigate to this directory and do on the command line ```python -m SimpleHTTPServer 7979```
+
+Navigate with browser to [localhost:7979](http://localhost:7979) and you should be able to run the example.
+
+
 Furthermore
 -----------
 
