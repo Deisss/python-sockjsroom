@@ -63,6 +63,8 @@ class MySocketHandler(SockJSRoomHandler):
         self.initialize()
 
         self.roomId = str(data.roomId)
+        # Register the current socket into this roomId
+        self.join(self.roomId)
 
     def on_chat(self, data):
         """ Start timer for everybody """
