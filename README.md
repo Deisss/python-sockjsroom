@@ -63,6 +63,7 @@ class MySocketHandler(SockJSRoomHandler):
         self.initialize()
 
         self.roomId = str(data.roomId)
+
         # Register the current socket into this roomId
         self.join(self.roomId)
 
@@ -74,6 +75,7 @@ class MySocketHandler(SockJSRoomHandler):
     def on_leave(self):
         """ Quit timer system """
         if self.roomId != "0":
+            # Removing the link betweem roomId and socket
             self.leave(self.roomId)
 
         self.initialize()
