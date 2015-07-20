@@ -1,0 +1,35 @@
+#chatContent {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#chatContent > div {
+    display: inline-block;
+}
+
+.chatRoom {
+    border: 5px solid #444;
+}
+
+.chatRoom div {
+    min-height: 200px;
+    width: 100%;
+    border: 1px solid #CCC;
+    margin-bottom: 2px;
+}
+.chatRoom input {
+    width: 100%;
+}
+
+.chatRoom a {
+    color: blue;
+}
+.chatRoom p {
+    padding-left: 10px;
+    color: #888;
+}
+.chatRoom small {
+    font-style: italic;
+    color: #444;
+}
